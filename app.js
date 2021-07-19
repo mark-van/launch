@@ -19,6 +19,7 @@ const
     DB_URL = process.env.DB_URL || 'mongodb://localhost:27017/launch',//process.env.DB_URL,
     User = require('./models/user');
     
+let currentPiIP = process.env.PIIP;
 const MongoDBStore = require("connect-mongo")(session);  
 //'mongodb://localhost:27017/launch'
 mongoose.connect(DB_URL, {
@@ -88,6 +89,19 @@ app.use((req, res, next) => {
     next();
 })
 
+const expressWs = require('express-ws')(app);
+
+app.ws('/launch', function(ws, req) {
+    console.log("1");
+    ws.on('message', function(msg) {
+        console.log("2");
+        ws.send(msg);
+        console.log("received messsage");
+        console.log(msg);
+    });
+    //console.log("3");
+  });
+
 app.get("/fakeUser", async (req, res) => {
     const user = new User({email: 'mark@gmail.com', username: 'Mark'});
     const newUser = await User.register(user, 'chicken'); //hashes password and stores it. Also checks if user is unique
@@ -105,6 +119,12 @@ app.use('/', usersRoutes);
 app.get('/', (req, res) => {
     res.render('home');
 })
+
+app.put('/launch', (req,res) => {
+    exec(`PIGPIO_ADDR=${currentPiIP} python3 ./public/py/launch.py`);
+    res.redirect('/');
+})
+
 
 //for every request and every path(that made it here)
 app.all('*', (req, res, next) => {
