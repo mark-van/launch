@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %> 
+<h1>Launch Ideas</h1>
+<div>
+    <a href="/posts/new">Add Post</a>
+</div>
+<ul>
+    <% for (let post of posts) { %> 
+        <div class="card" mb-3>
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" src="<%= post.image %>" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"> <%= post.title %> </h5>
+                        <p class="card-text"> <%= post.description %> </p>
+                        <a class="btn btn-primary" href="/posts/<%= post._id %> ">View <%= post.title %></a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %> 
+</ul>

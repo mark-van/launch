@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %> 
+<div class="row">
+    <h1 class="text-center">New Post</h1>
+    <div class="col-6 offset-3">
+        <form action="/posts" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="post[title]" required>
+            </div>
+            <div  class="mb-3">
+                <label  class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text-area" id="description" name="post[description]" required></textarea>
+            </div>
+            <!-- <div class="mb-3">
+                <label class="form-label" for="image">Image URL</label>
+                <input class="form-control" type="text" id="image" name="post[image]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Choose image(s)...</label>
+                <input class="form-control" type="file" name="image" id="formFile" multiple>
+            </div>
+            <!-- with multiple attribute you can upload multiple files-->
+            <div class="mb-3">
+                <button class="btn btn-success">Add Idea</button>
+            </div>
+        </form>
+        <a href="/posts">Posts</a>
+    </div>
+</div>
+
