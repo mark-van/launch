@@ -90,7 +90,7 @@ app.use((req, res, next) => {
 })
 
 const expressWs = require('express-ws')(app);
-
+let launch = 0;
 app.ws('/launch', function(ws, req) {
     console.log("1");
     ws.on('message', function(msg) {
@@ -99,15 +99,17 @@ app.ws('/launch', function(ws, req) {
         console.log("received messsage");
         console.log(msg);
     });
-    //console.log("3");
-  });
+    console.log("3");
+    if (launch == 1){
+        ws.send("LAUNCH IT!");
+    }
+    
+});
 
-app.get("/fakeUser", async (req, res) => {
-    const user = new User({email: 'mark@gmail.com', username: 'Mark'});
-    const newUser = await User.register(user, 'chicken'); //hashes password and stores it. Also checks if user is unique
-    res.send(newUser);
+app.get("/launchButton", async (req, res) => {
+    launch == 1;
+    console.log("/launchButton");
 })
-
 
 // where is posts defined?
 app.use('/posts', postsRoutes); //specifies the prefics for all of the routes in this router//all of the routs are going to start with this path
