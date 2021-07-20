@@ -4,13 +4,13 @@ Interactive streaming service where pressing a launch button results in a immedi
 
 Launch web app is a available at https://dry-badlands-58743.herokuapp.com.
 
-## Launch Web application
+### Launch Web application
 Web application build using express, EJS, mongoose, and mongoDB. Produced as a final project for an online web development course. Code can be found in this repository.
 
-## [Launch Rasberry Pi repository](https://github.com/markvangenderen/launch-pi "Launch Rasberry Pi reopository")
+### [Launch Rasberry Pi repository](https://github.com/markvangenderen/launch-pi "Launch Rasberry Pi reopository")
 Client side WebSocket running on raspberry pi which executes launch immediately once launch signal is transmitted
 
-## [Launch WebSocket Server repository](https://github.com/markvangenderen/launch-ws-server "Launch WebSocket Server")
+### [Launch WebSocket Server repository](https://github.com/markvangenderen/launch-ws-server "Launch WebSocket Server")
 WebSocket server which broadcasts launch signal to all clients when a launch key is received
 
 
