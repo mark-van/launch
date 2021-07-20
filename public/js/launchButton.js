@@ -1,7 +1,7 @@
 const launchButton = document.querySelector('#launch');
 //const axios = require('axios');
 // Create WebSocket connection.
-const socket = new WebSocket('ws://peaceful-stream-94197.herokuapp.com', "echo-protocol");
+const socket = new WebSocket('wss://peaceful-stream-94197.herokuapp.com', "echo-protocol");
 
 console.log("helllo");
 launchButton.addEventListener('click', launch);
