@@ -5,7 +5,7 @@ Interactive streaming web application where pressing a launch button results in 
 Launch web app is a available at https://dry-badlands-58743.herokuapp.com.
 
 ### Launch Web application
-Web application build using express, EJS, mongoose, and mongoDB. Post and comment functionaly was implemented with reference to online [web developmetn course](https://www.udemy.com/course/the-web-developer-bootcamp/) 
+Web application build using express, EJS, mongoose, and mongoDB. Post and comment functionaly was implemented with reference to an online [web developmetn course](https://www.udemy.com/course/the-web-developer-bootcamp/) 
 
 ### [Launch Rasberry Pi repository](https://github.com/markvangenderen/launch-pi "Launch Rasberry Pi reopository")
 Client side WebSocket running on raspberry pi which executes launch immediately when launch signal is received
