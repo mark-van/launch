@@ -1,6 +1,6 @@
 # Launch
 
-Interactive streaming application where pressing a launch button results in a immediate response on a embedded twitch live stream. Viewers can post launch suggestions and discuss the viability of these plans with the website's post and comment functionality. The launch button triggers a specific websocket message (launch key) which is sent to the WebSocket server, and then broadcasted to all devices(including the pi). The raspberry pi then executes a command to run the code which performs the 'launch'.
+Interactive streaming web application where pressing a launch button results in a immediate response on a embedded twitch live stream. Viewers can post launch suggestions and discuss the viability of these plans with the website's post and comment functionality. The launch button triggers a specific websocket message (launch key) which is sent to the WebSocket server, and then broadcasted to all devices(including the pi). The raspberry pi then executes a command to run the code which performs the 'launch'.
 
 Launch web app is a available at https://dry-badlands-58743.herokuapp.com.
 
