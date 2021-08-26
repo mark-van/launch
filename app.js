@@ -16,6 +16,7 @@ const
     usersRoutes = require('./routes/users'),
     passport = require('passport'), //allows you to plug in multiple strategies for authentication
     LocalStrategy = require('passport-local'),
+    mongoSanitize = require('express-mongo-sanitize'),
     DB_URL = process.env.DB_URL || 'mongodb://localhost:27017/launch',//process.env.DB_URL,
     User = require('./models/user');
     
@@ -45,6 +46,8 @@ app.use(express.urlencoded({extended: true})); //middelware
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public'))); //tell express to serve our public directory
 
+//prevent MongoDB Operator Injection
+app.use(mongoSanitize());
 const secret = process.env.SECRET || 'goodsecret';
 
 const store = new MongoDBStore({
@@ -57,7 +60,6 @@ store.on("error", function (e) {
     console.log("SESSION ERROR", e);
 })
 
-
 const sesssionConfig = {
     store,
     secret: secret,
@@ -69,6 +71,7 @@ const sesssionConfig = {
         maxAge: 100000000                   //^^
     }
 }
+
 app.use(session(sesssionConfig));
 app.use(flash());
 app.use(passport.initialize());
@@ -89,42 +92,14 @@ app.use((req, res, next) => {
     next();
 })
 
-const expressWs = require('express-ws')(app);
-let launch = 0;
-app.ws('/launch', function(ws, req) {
-    console.log("1");
-    ws.on('message', function(msg) {
-        console.log("2");
-        ws.send(msg);
-        console.log("received messsage");
-        console.log(msg);
-    });
-    console.log("3");
-    if (launch == 1){
-        ws.send("LAUNCH IT!");
-    }
-    
-});
-
-app.get("/launchButton", async (req, res) => {
-    launch == 1;
-    console.log("/launchButton");
-})
-
 // where is posts defined?
 app.use('/posts', postsRoutes); //specifies the prefics for all of the routes in this router//all of the routs are going to start with this path
 app.use('/posts/:id/consults', consultsRoutes);
 app.use('/', usersRoutes);
 
 
-
 app.get('/', (req, res) => {
     res.render('home');
-})
-
-app.put('/launch', (req,res) => {
-    exec(`PIGPIO_ADDR=${currentPiIP} python3 ./public/py/launch.py`);
-    res.redirect('/');
 })
 
 
