@@ -5,7 +5,7 @@ Interactive streaming web application where pressing a launch button results in 
 Launch web app is a available at https://dry-badlands-58743.herokuapp.com (may take some time to load).<br>
 NOTE: Current build requires 24hr non-idling hosting of WebSocket server for launch feature to function properly. Unfortunately, I am currently unwilling to pay for hosting services and could not find a free long-term hosting solution that did not involve possibly compromising the security of my router (which I share with several roommates).
 
-## Why is this project of interest to me
+### Why is this project of interest to me
 - Wanted there to be a fun interactive platform where I could display my electrical engineering projects
 
 ### Launch Web application
